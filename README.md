@@ -26,4 +26,5 @@ Example:
 "DeveloperConsole.GearList.RemoveFromConsole("GEAR_BearHide", true);"
 
 First argument: itemname (works with or without gear_ prefix), upper/lower case does not matter
+
 Second argument: If true the adding fails silently, if its set to false a notification will appear in the console and log
