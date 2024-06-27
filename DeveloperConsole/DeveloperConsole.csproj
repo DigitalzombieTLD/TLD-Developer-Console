@@ -21,10 +21,68 @@
 		<DebugType>none</DebugType>
 	</PropertyGroup>
 
-	<!--This is the of packages that the mod references.-->
 	<ItemGroup>
-		<!--This package contains almost everything a person could possibly need to reference while modding.-->
-		<PackageReference Include="ds5678.Modding.TLD.Il2CppAssemblies.Windows" Version="2.10.0" />
-		<!--If the mod references any other mods (such as ModSettings), their NuGet package will also need to be listed here.-->
+	  <Reference Include="0Harmony">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\net6\0Harmony.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="Assembly-CSharp">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="Il2CppInterop.Common">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\net6\Il2CppInterop.Common.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="Il2CppInterop.Generator">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\net6\Il2CppInterop.Generator.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="Il2CppInterop.Runtime">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\net6\Il2CppInterop.Runtime.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="Il2Cppmscorlib">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="Il2CppSystem">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\Il2CppAssemblies\Il2CppSystem.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="Il2CppTLD.Addressables">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\Il2CppAssemblies\Il2CppTLD.Addressables.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="MelonLoader">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\net6\MelonLoader.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="ModSettings">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\Mods\ModSettings.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="Unity.Addressables">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\Il2CppAssemblies\Unity.Addressables.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="Unity.ResourceManager">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\Il2CppAssemblies\Unity.ResourceManager.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="UnityEngine">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\Il2CppAssemblies\UnityEngine.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="UnityEngine.CoreModule">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="UnityEngine.PhysicsModule">
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\Il2CppAssemblies\UnityEngine.PhysicsModule.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
 	</ItemGroup>
+
+	<!--This is the of packages that the mod references.-->
 </Project>

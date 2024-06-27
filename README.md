@@ -1,4 +1,4 @@
-# Developer-Console
+# Developer-Console v1.7.0
 
 A mod for The Long Dark that makes Hinterland's developer console accessible in-game.
 
@@ -10,8 +10,20 @@ A mod for The Long Dark that makes Hinterland's developer console accessible in-
 - Press the TAB key to auto-complete a command
 - Auto-completion also works on the arguments of certain commands, such as "gear_add"
 
-## Installation
+## Dependencies
 
-1. If you haven't done so already, install MelonLoader by downloading and running [MelonLoader.Installer.exe](https://github.com/HerpDerpinstine/MelonLoader/releases/latest/download/MelonLoader.Installer.exe)
-2. Download the latest version of `DeveloperConsole.dll` from the [releases page](https://github.com/FINDarkside/TLD-Developer-Console/releases)
-3. Move `DeveloperConsole.dll` into the Mods folder in your TLD install directory
+- ModSettings
+
+## Changelog
+
+1.7.0
+- ModSettings integration
+- Button for opening console can be customized
+- Slider for console font size
+- Method addition: Modders can disable the "add" command for items
+
+Example:
+"DeveloperConsole.GearList.RemoveFromConsole("GEAR_BearHide", true);"
+
+First argument: itemname (works with or without gear_ prefix)
+Second argument: If true the adding fails silently, if its set to false a notification will appear in the console and log

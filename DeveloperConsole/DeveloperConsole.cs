@@ -12,9 +12,17 @@ namespace DeveloperConsole {
     internal class DeveloperConsole : MelonMod {
 
         public override void OnInitializeMelon() {
+            Settings.OnLoad();
             FileLog.CreateLogFile();
             AddConsoleCommands();
-            Debug.Log($"[{Info.Name}] version {Info.Version} loaded!");
+        }
+
+        public override void OnSceneWasLoaded(int buildIndex, string sceneName)
+        {
+           if(sceneName.Contains("MainMenu")) {
+               Settings.Apply();
+                GearList.RemoveFromConsole("GEAR_BearHide", true);
+           }
         }
 
         public override void OnApplicationQuit() {

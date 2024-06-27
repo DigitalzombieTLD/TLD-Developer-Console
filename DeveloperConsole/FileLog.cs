@@ -30,7 +30,7 @@ namespace DeveloperConsole {
 			}
 		}
 
-		[HarmonyPatch(typeof(uConsoleLog), "Add")]
+		[HarmonyLib.HarmonyPatch(typeof(uConsoleLog), "Add")]
 		internal class UConsoleLog_Add {
 			private static void Postfix(string text) {
 				Log(text);
