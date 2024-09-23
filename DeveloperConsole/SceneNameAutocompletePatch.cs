@@ -5,52 +5,36 @@ using Il2CppTLD.Scenes;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using Il2CppCollection = Il2CppSystem.Collections.Generic;
 
-namespace DeveloperConsole {
-    /*
-    [HarmonyPatch(typeof(BootUpdate), "Start")]
-    internal static class SceneNameAutocompletePatch {
+namespace DeveloperConsole
+{
 
-        private static void Postfix() {
-            Il2CppCollection.List<IResourceLocation> scenes = AssetHelper.FindAllAssetsLocations<SceneSet>().Cast<Il2CppCollection.List<IResourceLocation>>();
-            Il2CppCollection.List<string> sceneParamaters = new Il2CppCollection.List<string>();
+	[HarmonyPatch(typeof(GameManager), "Awake")]
+	internal static class SceneNameAutocompletePatch
+	{
+		static bool patched = false;
 
-            foreach (IResourceLocation sceneResource in scenes) {
-                sceneParamaters.Add(sceneResource.PrimaryKey);
-                sceneParamaters.Add(sceneResource.PrimaryKey.ToLowerInvariant());
-            }
-            sceneParamaters.Sort();
+		private static void Postfix()
+		{
+			if(patched)
+			{
+				return;
+			}
 
-            uConsoleAutoComplete.CreateCommandParameterSet("scene", sceneParamaters);
-        }
-    }*/
+			patched = true;
 
-    [HarmonyPatch(typeof(GameManager), nameof(GameManager.Awake))]
-    internal static class FixSceneAutoComplete
-    {
+			Il2CppCollection.List<IResourceLocation> scenes = AssetHelper.FindAllAssetsLocations<SceneSet>().Cast<Il2CppCollection.List<IResourceLocation>>();
+			Il2CppCollection.List<string> sceneParamaters = new Il2CppCollection.List<string>();
 
-        private static void Postfix()
-        {
+			foreach (IResourceLocation sceneResource in scenes)
+			{
+				sceneParamaters.Add(sceneResource.PrimaryKey);
+				sceneParamaters.Add(sceneResource.PrimaryKey.ToLowerInvariant());
+			}
+			sceneParamaters.Sort();
 
-            foreach (uConsoleCommandParameterSet ccps in uConsoleAutoComplete.m_CommandParameterSets)
-            {
-                if (!ccps.m_Commands.Contains("scene"))
-                {
-                    return;
-                }
+			uConsoleAutoComplete.CreateCommandParameterSet("scene", sceneParamaters);
+		}
+	}
 
-                Il2CppCollection.List<IResourceLocation> scenes = AssetHelper.FindAllAssetsLocations<SceneSet>().Cast<Il2CppCollection.List<IResourceLocation>>();
-                Il2CppCollection.List<string> sceneParamaters = new Il2CppCollection.List<string>();
 
-                foreach (IResourceLocation sceneResource in scenes)
-                {
-                    if (sceneResource.PrimaryKey.ToLowerInvariant().StartsWith("mod") && !ccps.m_AllowedParameters.Contains(sceneResource.PrimaryKey))
-                    {
-                        ccps.m_AllowedParameters.Add(sceneResource.PrimaryKey);
-                        ccps.m_AllowedParameters.Add(sceneResource.PrimaryKey.ToLowerInvariant());
-                    }
-                }
-            }
-
-        }
-    }
 }
