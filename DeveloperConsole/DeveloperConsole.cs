@@ -3,6 +3,7 @@ using Il2CppTLD.AddressableAssets;
 using Il2CppTLD.Scenes;
 using MelonLoader;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using Il2CppCollection = Il2CppSystem.Collections.Generic;
 using Scene = UnityEngine.SceneManagement;
@@ -13,7 +14,13 @@ namespace DeveloperConsole {
 
         public override void OnInitializeMelon() {
             Settings.OnLoad();
-            FileLog.CreateLogFile();
+
+            // Survival
+            GameObject prefab = Addressables.LoadAssetAsync<GameObject>("uConsole").WaitForCompletion();
+            UnityEngine.Object.Instantiate(prefab);
+            uConsole.m_Instance.m_Activate = Settings.options.openConsoleButton;
+
+           
             AddConsoleCommands();
         }
 
@@ -21,12 +28,11 @@ namespace DeveloperConsole {
         {
            if(sceneName.Contains("MainMenu")) {
                Settings.Apply();
-                GearList.RemoveFromConsole("GEAR_BearHide", true);
+              //GearList.RemoveFromConsole("GEAR_BearHide", true);
            }
         }
 
         public override void OnApplicationQuit() {
-            FileLog.MaybeLogNullReference();
             base.OnApplicationQuit();
         }
 

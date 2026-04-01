@@ -75,8 +75,7 @@
 	    <Private>False</Private>
 	  </Reference>
 	  <Reference Include="UnityEngine.CoreModule">
-	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
-	    <Private>False</Private>
+	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule_Funky.dll</HintPath>
 	  </Reference>
 	  <Reference Include="UnityEngine.PhysicsModule">
 	    <HintPath>..\..\..\..\..\Steam\steamapps\common\TheLongDark\MelonLoader\Il2CppAssemblies\UnityEngine.PhysicsModule.dll</HintPath>
