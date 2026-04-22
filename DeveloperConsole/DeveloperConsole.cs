@@ -2,6 +2,7 @@
 using Il2CppTLD.AddressableAssets;
 using Il2CppTLD.Scenes;
 using MelonLoader;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.ResourceLocations;
@@ -12,16 +13,9 @@ namespace DeveloperConsole {
 
     internal class DeveloperConsole : MelonMod {
 
-        public override void OnInitializeMelon() {
-            Settings.OnLoad();
-
-            // Survival
-            GameObject prefab = Addressables.LoadAssetAsync<GameObject>("uConsole").WaitForCompletion();
-            UnityEngine.Object.Instantiate(prefab);
-            uConsole.m_Instance.m_Activate = Settings.options.openConsoleButton;
-
-           
-            AddConsoleCommands();
+        public override void OnInitializeMelon() 
+        {            
+            MelonCoroutines.Start(LoadStuff());
         }
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
@@ -162,6 +156,21 @@ namespace DeveloperConsole {
             } else {
                 uConsoleLog.Add("No gear names containing '" + term + "' found");
             }
+        }
+
+        public static IEnumerator LoadStuff()
+        {
+            // Survival
+            GameObject prefab = Addressables.LoadAssetAsync<GameObject>("uConsole").WaitForCompletion();
+            UnityEngine.Object.Instantiate(prefab);
+
+            Settings.OnLoad();
+            AddConsoleCommands();
+            uConsole.m_Instance.m_Activate = Settings.options.openConsoleButton;                       
+
+            
+
+            yield return null;
         }
     }
 }
